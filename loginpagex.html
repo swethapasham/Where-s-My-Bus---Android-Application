@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+<script>/*
+function check_credentials()	{
+
+   
+        var p = $('#pass').val();
+		var i = $('#username').val();
+       // console.log(myUser.id);
+        var myRef = new Firebase("https://boiling-fire-3760.firebaseio.com/"+"$('#username').val()");
+		myRef.once('value', function() {
+		 if(snapshot.val() == null) {
+    alert('User does not exist.');
+  } else {
+ //   var firstName = snapshot.val().name.first;
+//    var lastName = snapshot.val().name.last;
+    alert('User julie’s full name is: ');
+  }
+        
+    }*/
+	 
+      
+    </script>
+
+</script>
+</head>
+
+<body>
+    
+<div data-role="page" id="pageone">
+  
+	<div data-role="header" data-position="inline" data-nobackbtn="true">
+	
+		<h1>Where is my bus?</h1>
+		
+	
+	
+	   </div>
+
+        <form id="loginForm" >
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="" placeholder="Username" />
+        </div>
+
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="pass" value="" placeholder="Password" />
+        </div>
+
+        <input type="Button" value="Login" id="submitButton" onclick='go(username.value)' >
+		<script>
+		function go(userId) {
+      //   var userId = prompt('Username?', 'Guest');
+        checkIfUserExists(userId);
+      }
+ 
+      var USERS_LOCATION = 'https://boiling-fire-3760.firebaseio.com/';
+       
+      function userExistsCallback(userId, exists) {
+        if (exists) {
+          alert('User named ' + userId + ' exists!');
+        } else {
+          alert('User named ' + userId + ' does not exist!');
+        }
+      }
+       
+      // Tests to see if /users/<userId> has any data. 
+      function checkIfUserExists(userId) {
+        var usersRef = new Firebase(USERS_LOCATION);
+        usersRef.child(userId).once('value', function(snapshot) {
+          var exists = (snapshot.val() !== null);
+          userExistsCallback(userId, exists);
+        });
+      }
+	  </script>
+        </form>
+        
+    </div>
+
+   
+
+
+
+</body>
+</html>

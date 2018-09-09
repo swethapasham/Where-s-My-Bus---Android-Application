@@ -1,0 +1,48 @@
+<html>
+  <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+</head>
+<body>
+<!--
+<script>
+var myDataRef = new Firebase('https://boiling-fire-3760.firebaseio.com');
+
+  function funct1(evt)
+    {
+   var title = $('#post-title').text();
+   var date = Date();
+     console.log('Setting '+title+' '+date);
+        
+     myDataRef.set({Title: title,Date: date});
+     evt.preventDefault();
+	 
+	     
+    }
+	var submit = document.getElementsByTagName('button');
+
+    submit.onclick = funct1;
+</script>-->
+	
+  
+ <script>
+  var dataRef = new Firebase("https://boiling-fire-3760.firebaseio.com");
+dataRef.set("swetha!");
+</script>
+  
+<div data-role="page" id="pageone">
+<form>
+<div class="post-title">
+            <input type="text" placeholder="Post Title">
+        </div>
+		<button type="submit" class="submit" id="submit">Submit</button>
+</form>
+</div>
+
+  </body>
+  
+  
+</html>

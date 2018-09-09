@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script>
+$(document).on("pagecreate","#pageone",function(){
+$('#verify').click(function(){
+
+
+
+
+var lat = 0;
+var lng = 0;
+getLocation();
+
+//A button click will call this function
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, { enableHighAccuracy: true });
+	var map=new google.maps.Map(document.getElementById("map_canvas"));
+   var marker=new google.maps.Marker({
+  animation:google.maps.Animation.BOUNCE
+  });
+
+marker.setMap(map);
+	}
+
+// onSuccess Geolocation
+//
+function onSuccess(position) {
+    //Lat long will be fetched and stored in session variables
+    //These variables will be used while storing data in local database 
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+	//alert('Lattitude: ' + lat + ' Longitude: ' + lng);
+    
+    sessionStorage.setItem('lattitude', lat);
+    sessionStorage.setItem('longitude', lng);
+}
+// onError Callback receives a PositionError object
+
+function onError(error) {
+    alert('code: ' + error.code + '\n' +
+          'message: ' + error.message + '\n');
+
+                        }  
+						
+/*function handle_geolocation_query(position)
+{
+start = new google.maps.LatLng(lat,
+lng);
+ themap.get(‘map’).panTo(start);
+}*/
+
+
+
+  });                       
+});
+
+
+
+
+
+
+
+
+</script>
+</head>
+	<body>
+	<div data-role="page" id="pageone">
+  
+	<div data-role="header" data-position="inline" data-nobackbtn="true">
+	
+		<h1>Bus Route</h1>
+		<div data-role="navbar">
+    <ul>
+      <li><a href="index.html">Bus location</a>
+	 
+      <li><a href="#dialog" data-transition="none">Help locate</a></li>
+	 
+     
+    </ul>
+       </div>
+	   </div>
+	   <div data-role="main" class="ui-content">
+	   <input type="button" value="VERIFY" name="verify" id="verify"/>
+	   <div data-role="map1" class="ui-content" >
+	   <iframe id="map_canvas" src="https://mapsengine.google.com/map/embed?mid=zZJgftEmZFKs.k1-onilgRKmo" style="position:absolute; width:200%; height:200%;"></iframe>
+	   </div>
+	<!--<input type="button" value="Button">-->
+	</div>
+		
+
+		
+  
+</div> 
+
+</body>
+</html>
+
+
